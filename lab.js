@@ -328,8 +328,8 @@ const colors = {
 //do not edit this object
 
 //Code Here 
-
-
+const colorsCopy = { ...colors };
+console.log(colorsCopy);
 
 /*
  Now use the spread operator to combine the following 2 objects into one. 
@@ -356,6 +356,8 @@ const shippingInfo = {
 //do not edit the objects above
 
 //Code Here
+const helensInfo = { ...contactInfo, ...shippingInfo };
+console.log(helensInfo);
 
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
@@ -374,14 +376,24 @@ const shippingInfo = {
 */
 
 //Code Here 
-
+class Vehicle {
+  constructor(capacity, color, mileage) {
+    this.capacity = capacity;
+    this.color = color;
+    this.mileage = mileage;
+  }
+  move(miles) {
+    this.mileage += miles;
+    console.log(this.mileage);
+  }
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
-
+let myFirstVehicle = new Vehicle(4, 'White', 54000);
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -392,16 +404,26 @@ const shippingInfo = {
 */
 
 //Code Here
+class Motorcyle extends Vehicle {
+  constructor(capacity, color, mileage, make, isCool) {
+    super(capacity, color, mileage);
+    this.make = make;
+    this.isCool = isCool;
+  }
+}
 
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
+let myFirstMotorcycle = new Motorcyle(1, 'Black', 500, 'Yamaha', false);
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
+
+myFirstMotorcycle.move(25);
 
 /*
   Let's make another class based off of Vehicle. 
@@ -420,7 +442,19 @@ const shippingInfo = {
 */
 
 //Code Here
-
+class Boat extends Vehicle {
+  constructor(capacity, color, mileage, name, type, isSeaworthy) {
+    super(capacity, color, mileage);
+    this.name = name;
+    this.type = type;
+    this.isSeaworthy = isSeaworthy;
+  }
+  checkSeaworthiness() { 
+    console.log(this.isSeaworthy ? `The ${this.color} ${this.name} is seaworthy!` : 
+    `You need to get your ${this.type} in shape!`); 
+  }
+  performMaintenance() {this.isSeaworthy = true; }
+}
 
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
@@ -428,21 +462,25 @@ const shippingInfo = {
 */
 
 //Code Here
+let myFirstBoat = new Boat(8, 'White', 1000, 'Petrichor', 'ski boat', false);
 
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness();
 
 /*
   Now run the performMaintenance method on your boat
 */
 
 //Code Here 
+myFirstBoat.performMaintenance();
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness();
